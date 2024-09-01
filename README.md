@@ -24,28 +24,15 @@ The Scalable AI Platform is a cutting-edge solution designed for creating, deplo
 No-code editor for creating and testing agents. The editor provides an interface to drop and connect nodes into a graph
 representing the cognitive logic of an agent. Chat is embedded in the editor to allow for rapid testing and debugging.
 
-https://github.com/kreneskyp/ix/assets/68635/f43923b9-7bce-4b64-b30e-3204eb1673e4
+![Screenshot (823)](https://github.com/user-attachments/assets/8c42fda9-ffcb-45d7-91de-882ac05d6d5e)
+
 
 ### 💬 Multi-Agent Chat interface
 Create your own teams of agents and interact with them through a single interface. Chat room support multiple agents.
 By default it includes the IX moderator agent, which delegates tasks to other agents. You can `@mention` specific 
 agents to complete the tasks.
 
-
-https://github.com/kreneskyp/ix/assets/68635/d1418c23-afb5-4aed-91c7-bf99b1c165d5
-
-
-### 💡 Smart Input 
-The smart input bar auto-completes agent `@mentions` and file & data `{artifacts}` created by tasks.
-
-https://github.com/kreneskyp/ix/assets/68635/27cf7085-7349-4641-9327-d31a3041a94c
-
-
-### ⚡ Message Queue Drive Agent Workers
-The agent runner backend is dockerized and is triggered with a celery message queue. This allows the backend to scale
-horizontally to support a fleet of agents running in parallel.
-
-![WorkerScalingTest_V3](https://github.com/kreneskyp/ix/assets/68635/bac934be-01c6-4882-bcfc-73a5ee85aa1e)
+![Screenshot (824)](https://github.com/user-attachments/assets/6f29dda2-5976-4c44-8245-57d81d70af6f)
 
 
 ### ⚙️ Component Config Layer
