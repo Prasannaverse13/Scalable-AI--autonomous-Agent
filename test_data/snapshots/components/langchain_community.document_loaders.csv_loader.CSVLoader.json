@@ -1,0 +1,100 @@
+{
+    "child_field": null,
+    "class_path": "langchain_community.document_loaders.csv_loader.CSVLoader",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "encoding": {
+                "label": "Encoding",
+                "type": "string"
+            },
+            "file_path": {
+                "label": "File_path",
+                "type": "string"
+            },
+            "source_column": {
+                "label": "Source_column",
+                "type": "string"
+            }
+        },
+        "required": [
+            "file_path"
+        ],
+        "title": "CSVLoader",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "out",
+            "label": "Documents",
+            "multiple": false,
+            "required": false,
+            "source_type": "data",
+            "template": false,
+            "type": "source"
+        }
+    ],
+    "description": "Load a CSV file into a list of documents.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "File_path",
+            "max": null,
+            "min": null,
+            "name": "file_path",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Source_column",
+            "max": null,
+            "min": null,
+            "name": "source_column",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Encoding",
+            "max": null,
+            "min": null,
+            "name": "encoding",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        }
+    ],
+    "name": "CSV Loader",
+    "type": "document_loader"
+}

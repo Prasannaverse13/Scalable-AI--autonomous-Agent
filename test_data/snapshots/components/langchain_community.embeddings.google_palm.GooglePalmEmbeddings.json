@@ -1,0 +1,72 @@
+{
+    "child_field": null,
+    "class_path": "langchain_community.embeddings.google_palm.GooglePalmEmbeddings",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "google_api_key": {
+                "description": "Google PaLM key",
+                "label": "",
+                "type": "string"
+            },
+            "model_name": {
+                "default": "models/embedding-gecko-001",
+                "description": "Model name to use",
+                "enum": [
+                    "models/embedding-gecko-001"
+                ],
+                "label": "Model",
+                "type": "string"
+            }
+        },
+        "required": [],
+        "title": "GooglePalmEmbeddings",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Google PaLM Embeddings",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": null,
+            "description": "Google PaLM key",
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "google_api_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": [
+                {
+                    "label": "models/embedding-gecko-001",
+                    "value": "models/embedding-gecko-001"
+                }
+            ],
+            "default": "models/embedding-gecko-001",
+            "description": "Model name to use",
+            "init_type": "init",
+            "input_type": null,
+            "label": "Model",
+            "max": null,
+            "min": null,
+            "name": "model_name",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        }
+    ],
+    "name": "Google PaLM Embeddings",
+    "type": "embeddings"
+}

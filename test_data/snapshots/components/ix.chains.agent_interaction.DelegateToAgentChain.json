@@ -1,0 +1,171 @@
+{
+    "child_field": null,
+    "class_path": "ix.chains.agent_interaction.DelegateToAgentChain",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "delegate_inputs": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "output_key": {
+                "default": "delegate_to",
+                "label": "Output_key",
+                "type": "string"
+            },
+            "tags": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "style": {
+                    "width": "100%"
+                },
+                "type": "array",
+                "uniqueItems": false
+            },
+            "target_alias": {
+                "label": "Target_alias",
+                "type": "string"
+            },
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "target_alias",
+            "delegate_inputs"
+        ],
+        "title": "DelegateToAgentChain",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "memory",
+            "label": null,
+            "multiple": true,
+            "required": false,
+            "source_type": "memory",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "prompt",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "prompt",
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "Delegate a request to another agent. Does not wait for a response.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": [],
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "tags",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": "delegate_to",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Output_key",
+            "max": null,
+            "min": null,
+            "name": "output_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Target_alias",
+            "max": null,
+            "min": null,
+            "name": "target_alias",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Delegate_inputs",
+            "max": null,
+            "min": null,
+            "name": "delegate_inputs",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        }
+    ],
+    "name": "DelegateToAgent",
+    "type": "chain"
+}

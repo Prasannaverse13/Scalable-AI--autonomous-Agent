@@ -1,0 +1,216 @@
+{
+    "child_field": null,
+    "class_path": "langchain.chains.conversational_retrieval.base.ConversationalRetrievalChain.from_llm",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "max_tokens_limit": {
+                "label": "Max_tokens_limit",
+                "type": "number"
+            },
+            "output_key": {
+                "default": "answer",
+                "label": "Output_key",
+                "type": "string"
+            },
+            "rephrase_question": {
+                "default": true,
+                "label": "Rephrase_question",
+                "type": "boolean"
+            },
+            "return_generated_question": {
+                "default": false,
+                "label": "Return_generated_question",
+                "type": "boolean"
+            },
+            "return_source_documents": {
+                "default": false,
+                "label": "Return_source_documents",
+                "type": "boolean"
+            },
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "max_tokens_limit"
+        ],
+        "title": "from_llm",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "llm",
+            "label": null,
+            "multiple": false,
+            "required": true,
+            "source_type": "llm",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "memory",
+            "label": null,
+            "multiple": true,
+            "required": true,
+            "source_type": "memory",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "prompt",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "prompt",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": "retriever",
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "retriever",
+            "label": null,
+            "multiple": false,
+            "required": true,
+            "source_type": [
+                "retriever",
+                "vectorstore"
+            ],
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "Chain for having a conversation based on retrieved documents.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": "answer",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Output_key",
+            "max": null,
+            "min": null,
+            "name": "output_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": true,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Rephrase_question",
+            "max": null,
+            "min": null,
+            "name": "rephrase_question",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "bool"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Return_source_documents",
+            "max": null,
+            "min": null,
+            "name": "return_source_documents",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "bool"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Return_generated_question",
+            "max": null,
+            "min": null,
+            "name": "return_generated_question",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "bool"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Max_tokens_limit",
+            "max": null,
+            "min": null,
+            "name": "max_tokens_limit",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "int"
+        }
+    ],
+    "name": "ConversationalRetrievalChain",
+    "type": "chain"
+}

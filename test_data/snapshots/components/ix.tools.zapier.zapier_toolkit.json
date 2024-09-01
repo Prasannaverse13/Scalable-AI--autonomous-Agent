@@ -1,0 +1,95 @@
+{
+    "child_field": null,
+    "class_path": "ix.tools.zapier.zapier_toolkit",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "zapier_nla_api_base": {
+                "default": "https://nla.zapier.com/api/v1/",
+                "label": "API Base",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "zapier_nla_api_key": {
+                "input_type": "secret",
+                "label": "API Key",
+                "secret_key": "Zapier NLA API",
+                "type": "string"
+            },
+            "zapier_nla_oauth_access_token": {
+                "input_type": "secret",
+                "label": "OAuth Token",
+                "secret_key": "Zapier NLA OAuth",
+                "type": "string"
+            }
+        },
+        "required": [
+            "zapier_nla_api_key",
+            "zapier_nla_oauth_access_token"
+        ],
+        "title": "zapier_toolkit",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Tools for interacting with Zapier tasks",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "secret",
+            "label": "API Key",
+            "max": null,
+            "min": null,
+            "name": "zapier_nla_api_key",
+            "parent": null,
+            "required": true,
+            "secret_key": "Zapier NLA API",
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "secret",
+            "label": "OAuth Token",
+            "max": null,
+            "min": null,
+            "name": "zapier_nla_oauth_access_token",
+            "parent": null,
+            "required": true,
+            "secret_key": "Zapier NLA OAuth",
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": "https://nla.zapier.com/api/v1/",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "API Base",
+            "max": null,
+            "min": null,
+            "name": "zapier_nla_api_base",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "str"
+        }
+    ],
+    "name": "Zapier",
+    "type": "tool"
+}

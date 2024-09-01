@@ -1,0 +1,87 @@
+{
+    "child_field": null,
+    "class_path": "ix.chains.llm_chain.LLMReply",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [],
+        "title": "LLMReply",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "llm",
+            "label": null,
+            "multiple": false,
+            "required": true,
+            "source_type": "llm",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "memory",
+            "label": null,
+            "multiple": true,
+            "required": false,
+            "source_type": "memory",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "prompt",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "prompt",
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "Chain that prompts an LLM for a text completion.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        }
+    ],
+    "name": "LLM Reply",
+    "type": "chain"
+}

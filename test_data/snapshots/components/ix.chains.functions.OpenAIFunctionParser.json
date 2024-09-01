@@ -1,0 +1,41 @@
+{
+    "child_field": null,
+    "class_path": "ix.chains.functions.OpenAIFunctionParser",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "parse_json": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [],
+        "title": "OpenAIFunctionParser",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Parses the output of a function",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "parse_json",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        }
+    ],
+    "name": "Function Output Parser",
+    "type": "output_parser"
+}

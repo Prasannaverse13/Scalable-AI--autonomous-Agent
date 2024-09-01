@@ -1,0 +1,46 @@
+{
+    "child_field": null,
+    "class_path": "langchain.memory.chat_message_histories.file.FileChatMessageHistory",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "file_path": {
+                "default": "/var/app/workdir/chat_memory.txt",
+                "label": "",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            }
+        },
+        "required": [],
+        "title": "FileChatMessageHistory",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Stores memories in a local file",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": "/var/app/workdir/chat_memory.txt",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "file_path",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "string"
+        }
+    ],
+    "name": "Filesystem Memory Backend",
+    "type": "memory_backend"
+}

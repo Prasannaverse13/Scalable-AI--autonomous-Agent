@@ -1,0 +1,194 @@
+{
+    "child_field": null,
+    "class_path": "langchain.chat_models.anthropic.ChatAnthropic",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "anthropic_api_key": {
+                "input_type": "secret",
+                "label": "",
+                "secret_key": "Anthropic API",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "anthropic_api_url": {
+                "default": "https://api.anthropic.com",
+                "description": "API URL",
+                "label": "",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "cache": {
+                "label": "Cache",
+                "type": "boolean"
+            },
+            "metadata": {
+                "label": "Metadata",
+                "type": "object"
+            },
+            "tags": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "temperature": {
+                "default": 0,
+                "description": "Temperature",
+                "input_type": "slider",
+                "label": "",
+                "maximum": 2.0,
+                "minimum": 0.0,
+                "multipleOf": 0.05,
+                "type": "number"
+            },
+            "verbose": {
+                "label": "Verbose",
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "cache",
+            "verbose",
+            "tags",
+            "metadata"
+        ],
+        "title": "ChatAnthropic",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Anthropic",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": 0,
+            "description": "Temperature",
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "",
+            "max": 2.0,
+            "min": 0.0,
+            "name": "temperature",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 0.05,
+            "style": null,
+            "type": "number"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "secret",
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "anthropic_api_key",
+            "parent": null,
+            "required": false,
+            "secret_key": "Anthropic API",
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": "https://api.anthropic.com",
+            "description": "API URL",
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "anthropic_api_url",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Cache",
+            "max": null,
+            "min": null,
+            "name": "cache",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Verbose",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "bool"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Tags",
+            "max": null,
+            "min": null,
+            "name": "tags",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Metadata",
+            "max": null,
+            "min": null,
+            "name": "metadata",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "dict"
+        }
+    ],
+    "name": "Anthropic",
+    "type": "llm"
+}

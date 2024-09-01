@@ -1,0 +1,146 @@
+{
+    "child_field": null,
+    "class_path": "langchain_community.document_loaders.JSONLoader",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "content_key": {
+                "label": "Content_key",
+                "type": "string"
+            },
+            "file_path": {
+                "label": "File_path",
+                "type": "string"
+            },
+            "jq_schema": {
+                "input_type": "textarea",
+                "label": "Jq_schema",
+                "type": "string"
+            },
+            "json_lines": {
+                "default": false,
+                "label": "Json_lines",
+                "type": "boolean"
+            },
+            "text_content": {
+                "default": true,
+                "label": "Text_content",
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "file_path",
+            "jq_schema"
+        ],
+        "title": "JSONLoader",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "out",
+            "label": "Documents",
+            "multiple": false,
+            "required": false,
+            "source_type": "data",
+            "template": false,
+            "type": "source"
+        }
+    ],
+    "description": "Load a JSON file into a document.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "File_path",
+            "max": null,
+            "min": null,
+            "name": "file_path",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "textarea",
+            "label": "Jq_schema",
+            "max": null,
+            "min": null,
+            "name": "jq_schema",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Content_key",
+            "max": null,
+            "min": null,
+            "name": "content_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": true,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Text_content",
+            "max": null,
+            "min": null,
+            "name": "text_content",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Json_lines",
+            "max": null,
+            "min": null,
+            "name": "json_lines",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        }
+    ],
+    "name": "JSON Loader",
+    "type": "document_loader"
+}

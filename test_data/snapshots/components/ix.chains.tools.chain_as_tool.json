@@ -1,0 +1,134 @@
+{
+    "child_field": null,
+    "class_path": "ix.chains.tools.chain_as_tool",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "description": {
+                "default": "",
+                "input_type": "textarea",
+                "label": "",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "name": {
+                "default": "",
+                "label": "",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "return_direct": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            },
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [],
+        "title": "chain_as_tool",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "chain",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "chain",
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "Tool that runs a chain. Any chain may be converted into a tool.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": "",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "name",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": "",
+            "description": null,
+            "init_type": "init",
+            "input_type": "textarea",
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "description",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "return_direct",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        }
+    ],
+    "name": "Chain Tool",
+    "type": "tool"
+}

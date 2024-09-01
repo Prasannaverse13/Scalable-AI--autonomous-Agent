@@ -1,0 +1,17 @@
+{
+    "child_field": null,
+    "class_path": "ix.runnable.artifacts.LoadFile",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {},
+        "required": [],
+        "title": "LoadFile",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Loads a file from the filesystem",
+    "display_type": "node",
+    "fields": null,
+    "name": "Load file",
+    "type": "chain"
+}

@@ -1,0 +1,471 @@
+{
+    "child_field": null,
+    "class_path": "langchain_community.llms.ollama.Ollama",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "base_url": {
+                "default": "http://localhost:11434",
+                "label": "Base_url",
+                "type": "string"
+            },
+            "cache": {
+                "label": "Cache",
+                "type": "boolean"
+            },
+            "metadata": {
+                "label": "Metadata",
+                "type": "object"
+            },
+            "mirostat": {
+                "label": "Mirostat",
+                "type": "number"
+            },
+            "mirostat_eta": {
+                "label": "Mirostat_eta",
+                "type": "number"
+            },
+            "mirostat_tau": {
+                "label": "Mirostat_tau",
+                "type": "number"
+            },
+            "model": {
+                "default": "llama2",
+                "label": "Model",
+                "type": "string"
+            },
+            "num_ctx": {
+                "label": "Num_ctx",
+                "type": "number"
+            },
+            "num_gpu": {
+                "default": 1,
+                "input_type": "slider",
+                "label": "Num_gpu",
+                "maximum": 10.0,
+                "minimum": 0.0,
+                "multipleOf": 1.0,
+                "type": "number"
+            },
+            "num_thread": {
+                "label": "Num_thread",
+                "type": "number"
+            },
+            "repeat_last_n": {
+                "label": "Repeat_last_n",
+                "type": "number"
+            },
+            "repeat_penalty": {
+                "label": "Repeat_penalty",
+                "type": "number"
+            },
+            "stop": {
+                "label": "Stop",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "object"
+            },
+            "tags": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "temperature": {
+                "default": 0.8,
+                "input_type": "slider",
+                "label": "Temperature",
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "multipleOf": 0.05,
+                "type": "number"
+            },
+            "tfs_z": {
+                "label": "Tfs_z",
+                "type": "number"
+            },
+            "top_k": {
+                "default": 40,
+                "description": "Top K",
+                "input_type": "slider",
+                "label": "Top_k",
+                "maximum": 100.0,
+                "minimum": 1.0,
+                "multipleOf": 1.0,
+                "type": "number"
+            },
+            "top_p": {
+                "default": 0.9,
+                "input_type": "slider",
+                "label": "Top_p",
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "multipleOf": 0.05,
+                "type": "number"
+            },
+            "verbose": {
+                "label": "Verbose",
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "cache",
+            "verbose",
+            "tags",
+            "metadata"
+        ],
+        "title": "Ollama",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Ollama server for llama models",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": "http://localhost:11434",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Base_url",
+            "max": null,
+            "min": null,
+            "name": "base_url",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": "llama2",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Model",
+            "max": null,
+            "min": null,
+            "name": "model",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Mirostat",
+            "max": null,
+            "min": null,
+            "name": "mirostat",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Mirostat_eta",
+            "max": null,
+            "min": null,
+            "name": "mirostat_eta",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "float"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Mirostat_tau",
+            "max": null,
+            "min": null,
+            "name": "mirostat_tau",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "float"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Num_ctx",
+            "max": null,
+            "min": null,
+            "name": "num_ctx",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": 1,
+            "description": null,
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "Num_gpu",
+            "max": 10.0,
+            "min": 0.0,
+            "name": "num_gpu",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 1.0,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Num_thread",
+            "max": null,
+            "min": null,
+            "name": "num_thread",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Repeat_last_n",
+            "max": null,
+            "min": null,
+            "name": "repeat_last_n",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Repeat_penalty",
+            "max": null,
+            "min": null,
+            "name": "repeat_penalty",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "float"
+        },
+        {
+            "choices": null,
+            "default": 0.8,
+            "description": null,
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "Temperature",
+            "max": 1.0,
+            "min": 0.0,
+            "name": "temperature",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 0.05,
+            "style": null,
+            "type": "float"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Stop",
+            "max": null,
+            "min": null,
+            "name": "stop",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "List"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Tfs_z",
+            "max": null,
+            "min": null,
+            "name": "tfs_z",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "float"
+        },
+        {
+            "choices": null,
+            "default": 40,
+            "description": "Top K",
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "Top_k",
+            "max": 100.0,
+            "min": 1.0,
+            "name": "top_k",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 1.0,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": 0.9,
+            "description": null,
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "Top_p",
+            "max": 1.0,
+            "min": 0.0,
+            "name": "top_p",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 0.05,
+            "style": null,
+            "type": "float"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Cache",
+            "max": null,
+            "min": null,
+            "name": "cache",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Verbose",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "bool"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Tags",
+            "max": null,
+            "min": null,
+            "name": "tags",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Metadata",
+            "max": null,
+            "min": null,
+            "name": "metadata",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "dict"
+        }
+    ],
+    "name": "Ollama",
+    "type": "llm"
+}

@@ -1,0 +1,219 @@
+{
+    "child_field": null,
+    "class_path": "ix.tools.google.get_google_serper",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "gl": {
+                "default": "us",
+                "label": "Gl",
+                "type": "string"
+            },
+            "hl": {
+                "default": "en",
+                "label": "Hl",
+                "type": "string"
+            },
+            "k": {
+                "default": 10,
+                "label": "K",
+                "type": "number"
+            },
+            "return_direct": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            },
+            "serper_api_key": {
+                "input_type": "secret",
+                "label": "Serper_api_key",
+                "secret_key": "Serper API",
+                "type": "string"
+            },
+            "tbs": {
+                "label": "Tbs",
+                "type": "string"
+            },
+            "type": {
+                "default": "search",
+                "enum": [
+                    "news",
+                    "search",
+                    "places",
+                    "images"
+                ],
+                "input_type": "select",
+                "label": "Type",
+                "type": "string"
+            },
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [],
+        "title": "get_google_serper",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Tool that searches Google for a given query.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "return_direct",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": 10,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "K",
+            "max": null,
+            "min": null,
+            "name": "k",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": "us",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Gl",
+            "max": null,
+            "min": null,
+            "name": "gl",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": "en",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Hl",
+            "max": null,
+            "min": null,
+            "name": "hl",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": [
+                {
+                    "label": "News",
+                    "value": "news"
+                },
+                {
+                    "label": "Search",
+                    "value": "search"
+                },
+                {
+                    "label": "Places",
+                    "value": "places"
+                },
+                {
+                    "label": "Images",
+                    "value": "images"
+                }
+            ],
+            "default": "search",
+            "description": null,
+            "init_type": "init",
+            "input_type": "select",
+            "label": "Type",
+            "max": null,
+            "min": null,
+            "name": "type",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Tbs",
+            "max": null,
+            "min": null,
+            "name": "tbs",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "secret",
+            "label": "Serper_api_key",
+            "max": null,
+            "min": null,
+            "name": "serper_api_key",
+            "parent": null,
+            "required": false,
+            "secret_key": "Serper API",
+            "step": null,
+            "style": null,
+            "type": "str"
+        }
+    ],
+    "name": "Google Serper",
+    "type": "tool"
+}

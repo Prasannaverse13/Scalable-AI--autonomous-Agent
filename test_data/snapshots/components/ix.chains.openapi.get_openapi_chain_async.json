@@ -1,0 +1,113 @@
+{
+    "child_field": null,
+    "class_path": "ix.chains.openapi.get_openapi_chain_async",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "spec": {
+                "label": "OpenAPI URL",
+                "style": {
+                    "width": "500px"
+                },
+                "type": "string"
+            },
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [],
+        "title": "get_openapi_chain_async",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "llm",
+            "label": null,
+            "multiple": false,
+            "required": true,
+            "source_type": "llm",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "memory",
+            "label": null,
+            "multiple": true,
+            "required": false,
+            "source_type": "memory",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "prompt",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "prompt",
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "Chain that uses OpenAI Functions to call OpenAPI endpoints.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "OpenAPI URL",
+            "max": null,
+            "min": null,
+            "name": "spec",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "500px"
+            },
+            "type": "string"
+        }
+    ],
+    "name": "OpenAPI with OpenAI Functions",
+    "type": "chain"
+}

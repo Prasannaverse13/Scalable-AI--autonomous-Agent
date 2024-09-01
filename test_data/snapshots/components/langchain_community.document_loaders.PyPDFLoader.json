@@ -1,0 +1,79 @@
+{
+    "child_field": null,
+    "class_path": "langchain_community.document_loaders.PyPDFLoader",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "file_path": {
+                "label": "File_path",
+                "type": "string"
+            },
+            "password": {
+                "label": "Password",
+                "type": "string"
+            }
+        },
+        "required": [
+            "file_path"
+        ],
+        "title": "PyPDFLoader",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "out",
+            "label": "Documents",
+            "multiple": false,
+            "required": false,
+            "source_type": "data",
+            "template": false,
+            "type": "source"
+        }
+    ],
+    "description": "Load a PDF file into a document.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "File_path",
+            "max": null,
+            "min": null,
+            "name": "file_path",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Password",
+            "max": null,
+            "min": null,
+            "name": "password",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        }
+    ],
+    "name": "PDF Loader",
+    "type": "document_loader"
+}

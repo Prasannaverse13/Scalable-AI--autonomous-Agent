@@ -1,0 +1,17 @@
+{
+    "child_field": null,
+    "class_path": "ix.runnable.artifacts.LoadArtifacts",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {},
+        "required": [],
+        "title": "LoadArtifacts",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Loads artifacts from the database",
+    "display_type": "node",
+    "fields": [],
+    "name": "Load Artifacts",
+    "type": "chain"
+}

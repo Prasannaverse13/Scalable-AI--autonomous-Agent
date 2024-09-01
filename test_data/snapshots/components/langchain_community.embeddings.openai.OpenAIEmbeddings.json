@@ -1,0 +1,146 @@
+{
+    "child_field": null,
+    "class_path": "langchain_community.embeddings.openai.OpenAIEmbeddings",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "allowed_special": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "chunk_size": {
+                "default": 1000,
+                "label": "",
+                "type": "number"
+            },
+            "disallowed_special": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "max_retries": {
+                "default": "6",
+                "input_type": "slider",
+                "label": "",
+                "maximum": 6.0,
+                "minimum": 0.0,
+                "multipleOf": 1.0,
+                "type": "number"
+            },
+            "model": {
+                "default": "text-embedding-ada-002",
+                "enum": [
+                    "text-embedding-ada-002"
+                ],
+                "input_type": "select",
+                "label": "",
+                "type": "string"
+            }
+        },
+        "required": [],
+        "title": "OpenAIEmbeddings",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Embeddings from OpenAI's API.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": [
+                {
+                    "label": "text-embedding-ada-002",
+                    "value": "text-embedding-ada-002"
+                }
+            ],
+            "default": "text-embedding-ada-002",
+            "description": null,
+            "init_type": "init",
+            "input_type": "select",
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "model",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "allowed_special",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": [],
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "disallowed_special",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": 1000,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "chunk_size",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": "6",
+            "description": null,
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "",
+            "max": 6.0,
+            "min": 0.0,
+            "name": "max_retries",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 1.0,
+            "style": null,
+            "type": "int"
+        }
+    ],
+    "name": "OpenAI Embeddings",
+    "type": "embeddings"
+}

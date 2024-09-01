@@ -1,0 +1,101 @@
+{
+    "child_field": "chains",
+    "class_path": "langchain.chains.SequentialChain",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "input_variables": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "style": {
+                    "width": "100%"
+                },
+                "type": "array",
+                "uniqueItems": false
+            },
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [],
+        "title": "SequentialChain",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "memory",
+            "label": null,
+            "multiple": true,
+            "required": false,
+            "source_type": "memory",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "chains",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "chain",
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "Runs a sequence of chains passing outputs from one to the next.",
+    "display_type": "list",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": [],
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "input_variables",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "list"
+        }
+    ],
+    "name": "Sequence",
+    "type": "chain"
+}

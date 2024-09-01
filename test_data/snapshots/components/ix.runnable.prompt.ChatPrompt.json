@@ -1,0 +1,65 @@
+{
+    "child_field": null,
+    "class_path": "ix.runnable.prompt.ChatPrompt",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "messages": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            }
+        },
+        "required": [],
+        "title": "ChatPrompt",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "out",
+            "label": "Prompt",
+            "multiple": false,
+            "required": false,
+            "source_type": "prompt",
+            "template": false,
+            "type": "source"
+        }
+    ],
+    "description": "Template for Chat style LLM request. Renders System, User, and AI messages",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": [
+                {
+                    "input_variables": [],
+                    "role": "system",
+                    "template": ""
+                }
+            ],
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "messages",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        }
+    ],
+    "name": "Chat Prompt Template",
+    "type": "prompt"
+}

@@ -1,0 +1,243 @@
+{
+    "child_field": null,
+    "class_path": "ix.chains.components.vectorstores.AsyncRedisVectorstore",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "allowed_search_types": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "content_key": {
+                "default": "content",
+                "description": "Key for storing content",
+                "label": "",
+                "type": "string"
+            },
+            "index_name": {
+                "description": "Name of the index in the Redis",
+                "label": "",
+                "type": "string"
+            },
+            "metadata_key": {
+                "default": "metadata",
+                "description": "Key for storing metadata",
+                "label": "",
+                "type": "string"
+            },
+            "redis_url": {
+                "default": "redis://redis:6379/0",
+                "description": "URL of the Redis server",
+                "label": "",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "search_kwargs": {
+                "label": "Search_kwargs",
+                "type": "object"
+            },
+            "search_type": {
+                "default": "similarity",
+                "label": "Search_type",
+                "type": "string"
+            },
+            "vector_key": {
+                "default": "content_vector",
+                "description": "Key for storing vectors",
+                "label": "",
+                "type": "string"
+            }
+        },
+        "required": [
+            "allowed_search_types",
+            "search_kwargs"
+        ],
+        "title": "AsyncRedisVectorstore",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "embedding",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "embeddings",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "documents",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "text_splitter",
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "Redis Vector Store",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": "redis://redis:6379/0",
+            "description": "URL of the Redis server",
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "redis_url",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": "Name of the index in the Redis",
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "index_name",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": "content",
+            "description": "Key for storing content",
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "content_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": "metadata",
+            "description": "Key for storing metadata",
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "metadata_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": "content_vector",
+            "description": "Key for storing vectors",
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "vector_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": [
+                "similarity",
+                "similarity_score_threshold",
+                "mmr"
+            ],
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "allowed_search_types",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": "similarity",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Search_type",
+            "max": null,
+            "min": null,
+            "name": "search_type",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Search_kwargs",
+            "max": null,
+            "min": null,
+            "name": "search_kwargs",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "dict"
+        }
+    ],
+    "name": "Redis Vector Store",
+    "type": "vectorstore"
+}

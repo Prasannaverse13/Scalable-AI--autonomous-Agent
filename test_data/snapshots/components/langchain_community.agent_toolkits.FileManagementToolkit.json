@@ -1,0 +1,43 @@
+{
+    "child_field": null,
+    "class_path": "langchain_community.agent_toolkits.FileManagementToolkit",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "root_dir": {
+                "default": "/var/app/workdir",
+                "label": "Root_dir",
+                "type": "string"
+            }
+        },
+        "required": [
+            "root_dir"
+        ],
+        "title": "FileManagementToolkit",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Toolkit for interacting with a Local Files.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": "/var/app/workdir",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Root_dir",
+            "max": null,
+            "min": null,
+            "name": "root_dir",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        }
+    ],
+    "name": "File Management",
+    "type": "toolkit"
+}

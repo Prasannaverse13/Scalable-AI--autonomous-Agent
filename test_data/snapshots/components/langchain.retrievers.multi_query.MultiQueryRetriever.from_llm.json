@@ -1,0 +1,66 @@
+{
+    "child_field": null,
+    "class_path": "langchain.retrievers.multi_query.MultiQueryRetriever.from_llm",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {},
+        "required": [],
+        "title": "from_llm",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": "retriever",
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "retriever",
+            "label": null,
+            "multiple": false,
+            "required": true,
+            "source_type": [
+                "retriever",
+                "vectorstore"
+            ],
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "llm",
+            "label": null,
+            "multiple": false,
+            "required": true,
+            "source_type": "llm",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "prompt",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "prompt",
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "MultiQueryRetriever",
+    "display_type": "node",
+    "fields": [],
+    "name": "MultiQueryRetriever",
+    "type": "retriever"
+}

@@ -1,0 +1,174 @@
+{
+    "child_field": null,
+    "class_path": "langchain.memory.RedisChatMessageHistory",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "session_key": {
+                "default": "session_id",
+                "description": "component session will be initialized with this argument.",
+                "label": "Session Key",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "session_prefix": {
+                "default": "",
+                "description": "prefix applied to the session ID. e.g. 'chat' will result in 'chat:session_id'.Chains with the same scope and prefix will share the same session.",
+                "label": "Session Prefix",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "session_scope": {
+                "enum": [
+                    "chat",
+                    "agent",
+                    "task",
+                    "user"
+                ],
+                "input_type": "select",
+                "label": "Session Scope",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "ttl": {
+                "default": 3600,
+                "label": "",
+                "type": "number"
+            },
+            "url": {
+                "default": "redis://redis:6379/0",
+                "label": "",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            }
+        },
+        "required": [],
+        "title": "RedisChatMessageHistory",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Redis Memory Backend",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": "redis://redis:6379/0",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "url",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": 3600,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "ttl",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "number"
+        },
+        {
+            "choices": [
+                {
+                    "label": "chat",
+                    "value": "chat"
+                },
+                {
+                    "label": "agent",
+                    "value": "agent"
+                },
+                {
+                    "label": "task",
+                    "value": "task"
+                },
+                {
+                    "label": "user",
+                    "value": "user"
+                }
+            ],
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "select",
+            "label": "Session Scope",
+            "max": null,
+            "min": null,
+            "name": "session_scope",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": "",
+            "description": "prefix applied to the session ID. e.g. 'chat' will result in 'chat:session_id'.Chains with the same scope and prefix will share the same session.",
+            "init_type": "init",
+            "input_type": null,
+            "label": "Session Prefix",
+            "max": null,
+            "min": null,
+            "name": "session_prefix",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": "session_id",
+            "description": "component session will be initialized with this argument.",
+            "init_type": "init",
+            "input_type": null,
+            "label": "Session Key",
+            "max": null,
+            "min": null,
+            "name": "session_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "string"
+        }
+    ],
+    "name": "Redis Memory Backend",
+    "type": "memory_backend"
+}

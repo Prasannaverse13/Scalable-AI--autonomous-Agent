@@ -1,0 +1,86 @@
+{
+    "child_field": null,
+    "class_path": "ix.tools.graphql.get_graphql_tool",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "graphql_endpoint": {
+                "label": "Graphql_endpoint",
+                "type": "string"
+            },
+            "return_direct": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            },
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "graphql_endpoint"
+        ],
+        "title": "get_graphql_tool",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Tool that searches GraphQL for a given query.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "return_direct",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Graphql_endpoint",
+            "max": null,
+            "min": null,
+            "name": "graphql_endpoint",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        }
+    ],
+    "name": "GraphQL Tool",
+    "type": "tool"
+}

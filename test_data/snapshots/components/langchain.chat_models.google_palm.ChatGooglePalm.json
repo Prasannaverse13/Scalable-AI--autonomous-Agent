@@ -1,0 +1,275 @@
+{
+    "child_field": null,
+    "class_path": "langchain.chat_models.google_palm.ChatGooglePalm",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "cache": {
+                "label": "Cache",
+                "type": "boolean"
+            },
+            "google_api_key": {
+                "input_type": "secret",
+                "label": "API Key",
+                "secret_key": "Google GEN AI",
+                "type": "string"
+            },
+            "metadata": {
+                "label": "Metadata",
+                "type": "object"
+            },
+            "model_name": {
+                "default": "gpt-4",
+                "description": "OpenAI model",
+                "enum": [
+                    "models/chat-bison-001"
+                ],
+                "input_type": "select",
+                "label": "Model",
+                "type": "string"
+            },
+            "n": {
+                "default": 1,
+                "description": "Number of responses to sample",
+                "input_type": "slider",
+                "label": "Sample N responses",
+                "maximum": 5.0,
+                "minimum": 1.0,
+                "multipleOf": 1.0,
+                "type": "number"
+            },
+            "tags": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "temperature": {
+                "default": 0,
+                "description": "Temperature",
+                "input_type": "slider",
+                "label": "",
+                "maximum": 2.0,
+                "minimum": 0.0,
+                "multipleOf": 0.05,
+                "type": "number"
+            },
+            "top_k": {
+                "default": 1,
+                "description": "Top P",
+                "input_type": "slider",
+                "label": "",
+                "maximum": 20.0,
+                "minimum": 0.0,
+                "multipleOf": 1.0,
+                "type": "number"
+            },
+            "top_p": {
+                "default": 1,
+                "description": "Top P",
+                "input_type": "slider",
+                "label": "",
+                "maximum": 1.0,
+                "minimum": 0.0,
+                "multipleOf": 0.05,
+                "type": "number"
+            },
+            "verbose": {
+                "label": "Verbose",
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "model_name",
+            "cache",
+            "verbose",
+            "tags",
+            "metadata"
+        ],
+        "title": "ChatGooglePalm",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Google PaLM",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": [
+                {
+                    "label": "Bison-001",
+                    "value": "models/chat-bison-001"
+                }
+            ],
+            "default": "gpt-4",
+            "description": "OpenAI model",
+            "init_type": "init",
+            "input_type": "select",
+            "label": "Model",
+            "max": null,
+            "min": null,
+            "name": "model_name",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "secret",
+            "label": "API Key",
+            "max": null,
+            "min": null,
+            "name": "google_api_key",
+            "parent": null,
+            "required": false,
+            "secret_key": "Google GEN AI",
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": 0,
+            "description": "Temperature",
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "",
+            "max": 2.0,
+            "min": 0.0,
+            "name": "temperature",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 0.05,
+            "style": null,
+            "type": "number"
+        },
+        {
+            "choices": null,
+            "default": 1,
+            "description": "Top P",
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "",
+            "max": 1.0,
+            "min": 0.0,
+            "name": "top_p",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 0.05,
+            "style": null,
+            "type": "number"
+        },
+        {
+            "choices": null,
+            "default": 1,
+            "description": "Top P",
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "",
+            "max": 20.0,
+            "min": 0.0,
+            "name": "top_k",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 1.0,
+            "style": null,
+            "type": "number"
+        },
+        {
+            "choices": null,
+            "default": 1,
+            "description": "Number of responses to sample",
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "Sample N responses",
+            "max": 5.0,
+            "min": 1.0,
+            "name": "n",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 1.0,
+            "style": null,
+            "type": "number"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Cache",
+            "max": null,
+            "min": null,
+            "name": "cache",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Verbose",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "bool"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Tags",
+            "max": null,
+            "min": null,
+            "name": "tags",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Metadata",
+            "max": null,
+            "min": null,
+            "name": "metadata",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "dict"
+        }
+    ],
+    "name": "Google PaLM",
+    "type": "llm"
+}

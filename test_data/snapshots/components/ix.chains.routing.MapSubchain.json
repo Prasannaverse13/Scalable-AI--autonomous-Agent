@@ -1,0 +1,137 @@
+{
+    "child_field": "chains",
+    "class_path": "ix.chains.routing.MapSubchain",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "input_variables": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "map_input": {
+                "label": "Map Input",
+                "type": "string"
+            },
+            "map_input_to": {
+                "label": "Map Input To",
+                "type": "string"
+            },
+            "output_key": {
+                "label": "",
+                "type": "string"
+            }
+        },
+        "required": [],
+        "title": "MapSubchain",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "memory",
+            "label": null,
+            "multiple": true,
+            "required": false,
+            "source_type": "memory",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "chains",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "chain",
+            "template": false,
+            "type": "target"
+        }
+    ],
+    "description": "Runs a subchain for each item in a list.",
+    "display_type": "list",
+    "fields": [
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "input_variables",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Map Input",
+            "max": null,
+            "min": null,
+            "name": "map_input",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Map Input To",
+            "max": null,
+            "min": null,
+            "name": "map_input_to",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "output_key",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "string"
+        }
+    ],
+    "name": "MapSubchain",
+    "type": "chain"
+}

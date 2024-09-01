@@ -1,0 +1,17 @@
+{
+    "child_field": null,
+    "class_path": "ix.runnable.artifacts.EncodeImage",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {},
+        "required": [],
+        "title": "EncodeImage",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Prepare an image for image prompt",
+    "display_type": "node",
+    "fields": null,
+    "name": "Encode Image",
+    "type": "chain"
+}

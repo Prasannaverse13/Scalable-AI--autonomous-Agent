@@ -1,0 +1,192 @@
+{
+    "child_field": null,
+    "class_path": "langchain.llms.fireworks.Fireworks",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "cache": {
+                "label": "Cache",
+                "type": "boolean"
+            },
+            "fireworks_api_key": {
+                "input_type": "secret",
+                "label": "Fireworks_api_key",
+                "secret_key": "Fireworks.ai API",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "max_retries": {
+                "default": 20,
+                "input_type": "slider",
+                "label": "Max_retries",
+                "maximum": 50.0,
+                "minimum": 0.0,
+                "multipleOf": 1.0,
+                "type": "number"
+            },
+            "metadata": {
+                "label": "Metadata",
+                "type": "object"
+            },
+            "model": {
+                "default": "accounts/fireworks/models/llama-v2-7b-chat",
+                "label": "Model",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "tags": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            },
+            "verbose": {
+                "label": "Verbose",
+                "type": "boolean"
+            }
+        },
+        "required": [
+            "cache",
+            "verbose",
+            "tags",
+            "metadata"
+        ],
+        "title": "Fireworks",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Fireworks.ai LLM",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": "accounts/fireworks/models/llama-v2-7b-chat",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Model",
+            "max": null,
+            "min": null,
+            "name": "model",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "secret",
+            "label": "Fireworks_api_key",
+            "max": null,
+            "min": null,
+            "name": "fireworks_api_key",
+            "parent": null,
+            "required": false,
+            "secret_key": "Fireworks.ai API",
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": 20,
+            "description": null,
+            "init_type": "init",
+            "input_type": "slider",
+            "label": "Max_retries",
+            "max": 50.0,
+            "min": 0.0,
+            "name": "max_retries",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": 1.0,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Cache",
+            "max": null,
+            "min": null,
+            "name": "cache",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Verbose",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "bool"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Tags",
+            "max": null,
+            "min": null,
+            "name": "tags",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Metadata",
+            "max": null,
+            "min": null,
+            "name": "metadata",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "dict"
+        }
+    ],
+    "name": "Fireworks.ai",
+    "type": "llm"
+}

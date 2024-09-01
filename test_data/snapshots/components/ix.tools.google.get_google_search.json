@@ -1,0 +1,153 @@
+{
+    "child_field": null,
+    "class_path": "ix.tools.google.get_google_search",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "google_api_key": {
+                "input_type": "secret",
+                "label": "Google_api_key",
+                "secret_key": "Google Search API",
+                "type": "string"
+            },
+            "google_cse_id": {
+                "input_type": "secret",
+                "label": "Google_cse_id",
+                "secret_key": "Google Search API",
+                "type": "string"
+            },
+            "k": {
+                "default": 10,
+                "label": "K",
+                "type": "number"
+            },
+            "return_direct": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            },
+            "siterestrict": {
+                "default": false,
+                "label": "Siterestrict",
+                "type": "boolean"
+            },
+            "verbose": {
+                "default": false,
+                "label": "",
+                "type": "boolean"
+            }
+        },
+        "required": [],
+        "title": "get_google_search",
+        "type": "object"
+    },
+    "connectors": null,
+    "description": "Tool that searches Google for a given query.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "return_direct",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "",
+            "max": null,
+            "min": null,
+            "name": "verbose",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "secret",
+            "label": "Google_api_key",
+            "max": null,
+            "min": null,
+            "name": "google_api_key",
+            "parent": null,
+            "required": false,
+            "secret_key": "Google Search API",
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": "secret",
+            "label": "Google_cse_id",
+            "max": null,
+            "min": null,
+            "name": "google_cse_id",
+            "parent": null,
+            "required": false,
+            "secret_key": "Google Search API",
+            "step": null,
+            "style": null,
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": 10,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "K",
+            "max": null,
+            "min": null,
+            "name": "k",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "int"
+        },
+        {
+            "choices": null,
+            "default": false,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Siterestrict",
+            "max": null,
+            "min": null,
+            "name": "siterestrict",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "boolean"
+        }
+    ],
+    "name": "Google Search",
+    "type": "tool"
+}

@@ -1,0 +1,284 @@
+[
+  {
+    "model": "agents.agent",
+    "pk": "a6357f6a-0183-418c-946e-a2152a42ee3f",
+    "fields": {
+      "user": null,
+      "group": null,
+      "name": "Ingestion",
+      "alias": "ingest",
+      "purpose": "Example ingestion agent.\n\nThis agent accepts requests to import data from wikipedia into a Chroma vectorstore. \n\nSample Prompt:\n\"Search for artificial intelligence and add the URLs to the knowledge collection\"\n\nTo ask questions prompt the @knowledge agent, which is configured for the collection.",
+      "created_at": "2023-09-30T03:50:35.866Z",
+      "model": "",
+      "config": {},
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1",
+      "is_test": false
+    }
+  },
+  {
+    "model": "chains.chain",
+    "pk": "cf51a56e-e65f-4610-9a73-81ccda68e6c1",
+    "fields": {
+      "user": null,
+      "group": null,
+      "name": "Ingestion",
+      "description": "Example ingestion agent.\n\nThis agent accepts requests to import data from wikipedia into a Chroma vectorstore. \n\nSample Prompt:\n\"Search for artificial intelligence and add the URLs to the knowledge collection\"\n\nTo ask questions prompt the @knowledge agent, which is configured for the collection.",
+      "created_at": "2023-09-30T03:50:35.850Z",
+      "is_agent": true
+    }
+  },
+  {
+    "model": "chains.chainnode",
+    "pk": "2258798f-e165-4ec7-8d12-336cdc80e74b",
+    "fields": {
+      "class_path": "langchain_community.chat_models.ChatOpenAI",
+      "node_type": [
+        "langchain_community.chat_models.ChatOpenAI"
+      ],
+      "config": {
+        "verbose": false,
+        "streaming": true,
+        "max_tokens": 256,
+        "model_name": "gpt-4-0613",
+        "max_retries": 6,
+        "temperature": 0,
+        "request_timeout": 60
+      },
+      "name": null,
+      "description": null,
+      "root": false,
+      "position": {
+        "x": 160.0,
+        "y": 360.0
+      },
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1"
+    }
+  },
+  {
+    "model": "chains.chainnode",
+    "pk": "320e3eb8-dca6-4098-93b8-69810853aedb",
+    "fields": {
+      "class_path": "ix.tools.wikipedia.get_wikipedia",
+      "node_type": [
+        "ix.tools.wikipedia.get_wikipedia"
+      ],
+      "config": {
+        "lang": "en",
+        "verbose": false,
+        "return_direct": false,
+        "top_k_results": 3,
+        "doc_content_chars_max": 4000,
+        "load_all_available_meta": false
+      },
+      "name": null,
+      "description": null,
+      "root": false,
+      "position": {
+        "x": 200.0,
+        "y": 480.0
+      },
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1"
+    }
+  },
+  {
+    "model": "chains.chainnode",
+    "pk": "4336be58-6e54-442e-932b-e368a734f5dd",
+    "fields": {
+      "class_path": "langchain.memory.RedisChatMessageHistory",
+      "node_type": [
+        "langchain.memory.RedisChatMessageHistory"
+      ],
+      "config": {
+        "ttl": 3600,
+        "url": "redis://redis:6379/0",
+        "session_key": "session_id",
+        "session_scope": "",
+        "session_prefix": ""
+      },
+      "name": null,
+      "description": null,
+      "root": false,
+      "position": {
+        "x": -20.0,
+        "y": 720.0
+      },
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1"
+    }
+  },
+  {
+    "model": "chains.chainnode",
+    "pk": "5759b13b-e67a-4b8c-a5a8-94a3959f7a7e",
+    "fields": {
+      "class_path": "__ROOT__",
+      "node_type": [
+        "__ROOT__"
+      ],
+      "config": {
+        "outputs": [
+          "user_input",
+          "artifact_ids"
+        ],
+        "outputs_hash": [
+          "user_input",
+          "artifact_ids"
+        ]
+      },
+      "name": "",
+      "description": "",
+      "root": true,
+      "position": {
+        "x": 60.0,
+        "y": 240.0
+      },
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1"
+    }
+  },
+  {
+    "model": "chains.chainnode",
+    "pk": "7c5bd2c0-ff9b-400f-b134-b996f447caa6",
+    "fields": {
+      "class_path": "ix.chains.loaders.agents.initialize_openai_functions",
+      "node_type": [
+        "ix.chains.loaders.agents.initialize_openai_functions"
+      ],
+      "config": {
+        "verbose": true,
+        "max_iterations": 15,
+        "return_intermediate_steps": false
+      },
+      "name": null,
+      "description": null,
+      "root": false,
+      "position": {
+        "x": 530.0,
+        "y": 240.0
+      },
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1"
+    }
+  },
+  {
+    "model": "chains.chainnode",
+    "pk": "97aba019-e27b-4d47-a981-4742fefb4634",
+    "fields": {
+      "class_path": "ix.runnable.flow.load_chain_id",
+      "node_type": [
+        "ix.runnable.flow.load_chain_id"
+      ],
+      "config": {
+        "chain_id": "488b62fd-4481-44f2-90f7-13a86d08aad7"
+      },
+      "name": "ingest_url",
+      "description": "Ingests a URL",
+      "root": false,
+      "position": {
+        "x": 200.0,
+        "y": 570.0
+      },
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1"
+    }
+  },
+  {
+    "model": "chains.chainnode",
+    "pk": "9a29b917-afd0-4344-a970-a56f01aa6572",
+    "fields": {
+      "class_path": "langchain.memory.ConversationBufferMemory",
+      "node_type": [
+        "langchain.memory.ConversationBufferMemory"
+      ],
+      "config": {
+        "ai_prefix": "AI",
+        "input_key": "input",
+        "memory_key": "history",
+        "output_key": "output",
+        "human_prefix": "Human",
+        "return_messages": true
+      },
+      "name": null,
+      "description": null,
+      "root": false,
+      "position": {
+        "x": 270.0,
+        "y": 720.0
+      },
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1"
+    }
+  },
+  {
+    "model": "chains.chainedge",
+    "pk": "27bd2e9a-f5d7-4678-9c11-8573ca1fb463",
+    "fields": {
+      "source": "320e3eb8-dca6-4098-93b8-69810853aedb",
+      "target": "7c5bd2c0-ff9b-400f-b134-b996f447caa6",
+      "source_key": null,
+      "target_key": "tools",
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1",
+      "input_map": null,
+      "relation": "PROP"
+    }
+  },
+  {
+    "model": "chains.chainedge",
+    "pk": "284b1556-230f-4f8e-9030-4c71f5729674",
+    "fields": {
+      "source": "9a29b917-afd0-4344-a970-a56f01aa6572",
+      "target": "7c5bd2c0-ff9b-400f-b134-b996f447caa6",
+      "source_key": null,
+      "target_key": "memory",
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1",
+      "input_map": null,
+      "relation": "PROP"
+    }
+  },
+  {
+    "model": "chains.chainedge",
+    "pk": "4528ea8e-194b-49bc-b340-2396ebfd4306",
+    "fields": {
+      "source": "2258798f-e165-4ec7-8d12-336cdc80e74b",
+      "target": "7c5bd2c0-ff9b-400f-b134-b996f447caa6",
+      "source_key": null,
+      "target_key": "llm",
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1",
+      "input_map": null,
+      "relation": "PROP"
+    }
+  },
+  {
+    "model": "chains.chainedge",
+    "pk": "6565867c-0fd0-41cf-b9e3-1b3c7ad4a979",
+    "fields": {
+      "source": "97aba019-e27b-4d47-a981-4742fefb4634",
+      "target": "7c5bd2c0-ff9b-400f-b134-b996f447caa6",
+      "source_key": "chain",
+      "target_key": "tools",
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1",
+      "input_map": null,
+      "relation": "PROP"
+    }
+  },
+  {
+    "model": "chains.chainedge",
+    "pk": "6a697eec-2294-436a-870f-6df32c5813f1",
+    "fields": {
+      "source": "4336be58-6e54-442e-932b-e368a734f5dd",
+      "target": "9a29b917-afd0-4344-a970-a56f01aa6572",
+      "source_key": null,
+      "target_key": "chat_memory",
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1",
+      "input_map": null,
+      "relation": "PROP"
+    }
+  },
+  {
+    "model": "chains.chainedge",
+    "pk": "9441c8e1-6e43-4f19-bc66-d133f5a2dc43",
+    "fields": {
+      "source": "5759b13b-e67a-4b8c-a5a8-94a3959f7a7e",
+      "target": "7c5bd2c0-ff9b-400f-b134-b996f447caa6",
+      "source_key": "user_input",
+      "target_key": "in",
+      "chain": "cf51a56e-e65f-4610-9a73-81ccda68e6c1",
+      "input_map": null,
+      "relation": "LINK"
+    }
+  }
+]

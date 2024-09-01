@@ -1,0 +1,382 @@
+import logging
+import re
+from asgiref.sync import sync_to_async
+from django.contrib.auth.models import AbstractUser
+from fastapi import APIRouter, HTTPException
+from typing import Optional, Dict, Any
+from uuid import UUID
+
+from django.db.models import Q
+from django.conf import settings
+from fastapi.params import Depends
+from ix.api.auth import get_request_user
+
+from ix.api.chains.endpoints import DeletedItem
+from ix.chains.management.commands.create_ix_v2 import IX_AGENT_V2
+from ix.chat.models import Chat, Task
+from ix.agents.models import Agent
+from ix.api.agents.types import Agent as AgentPydantic
+from ix.api.chats.types import (
+    ChatGraph,
+    ChatNew,
+    ChatUpdate,
+    Chat as ChatPydantic,
+    Task as TaskPydantic,
+    Plan as PlanPydantic,
+    Artifact as ArtifactPydantic,
+    ChatAgentAction,
+    ChatMessage,
+    ChatInput,
+    ChatInList,
+    ChatQueryPage,
+    ChatMessageQueryPage,
+)
+from ix.task_log.models import UserFeedback, TaskLogMessage
+from ix.task_log.tasks.agent_runner import (
+    start_agent_loop,
+)
+
+
+logger = logging.getLogger(__name__)
+router = APIRouter()
+
+
+@router.post(
+    "/chats/", operation_id="create_chat", response_model=ChatPydantic, tags=["Chats"]
+)
+async def create_chat(chat: ChatNew, user: AbstractUser = Depends(get_request_user)):
+    # Check if user is authenticated
+    if user.is_anonymous:
+        raise Exception(
+            "Authentication is required to create a task."
+        )  # pragma: no cover
+
+    # If agent is not provided, use the default agent
+    if chat.lead_id:
+        lead = await Agent.objects.aget(pk=chat.lead_id)
+    else:
+        lead = await Agent.objects.aget(pk=IX_AGENT_V2)
+
+    task = await Task.objects.acreate(
+        name=chat.name,
+        user=user,
+        agent=lead,
+        chain_id=lead.chain_id,
+        autonomous=chat.autonomous,
+    )
+
+    chat_obj = await Chat.objects.acreate(
+        user=user,
+        task=task,
+        lead=lead,
+        name=chat.name,
+    )
+
+    # Add default agents to chat
+    for agent_id in settings.DEFAULT_AGENTS:
+        try:
+            agent = await Agent.objects.aget(pk=agent_id)
+        except Agent.DoesNotExist:
+            logger.exception(f"Default agent {agent_id} not found")
+            raise
+        await chat_obj.agents.aadd(agent)
+
+    return ChatPydantic.model_validate(chat_obj)
+
+
+@router.get(
+    "/chats/{chat_id}",
+    operation_id="get_chat",
+    response_model=ChatPydantic,
+    tags=["Chats"],
+)
+async def get_chat(chat_id: UUID, user: AbstractUser = Depends(get_request_user)):
+    query = Chat.filtered_owners(user)
+    try:
+        chat = await query.aget(pk=chat_id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat not found")
+    return ChatPydantic.model_validate(chat)
+
+
+@router.get(
+    "/chats/", operation_id="get_chats", response_model=ChatQueryPage, tags=["Chats"]
+)
+async def get_chats(
+    user: AbstractUser = Depends(get_request_user),
+    search: Optional[str] = None,
+    limit: int = 10,
+    offset: int = 0,
+):
+    query = Chat.filtered_owners(user)
+    if search:
+        query = query.filter(Q(name__icontains=search))
+    query = query.order_by("-created_at")
+
+    # punting on async implementation of pagination until later
+    return await sync_to_async(ChatQueryPage.paginate)(
+        output_model=ChatInList, queryset=query, limit=limit, offset=offset
+    )
+
+
+@router.put(
+    "/chats/{chat_id}",
+    operation_id="update_chat",
+    response_model=ChatPydantic,
+    tags=["Chats"],
+)
+async def update_chat(
+    chat_id: UUID, chat: ChatUpdate, user: AbstractUser = Depends(get_request_user)
+):
+    try:
+        chat_obj = await Chat.filtered_owners(user).aget(pk=chat_id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat not found")
+
+    for attr, value in chat.model_dump().items():
+        if value is not None:
+            setattr(chat_obj, attr, value)
+    await chat_obj.asave()
+
+    return ChatPydantic.model_validate(chat_obj)
+
+
+@router.delete(
+    "/chats/{chat_id}",
+    operation_id="delete_chat",
+    response_model=DeletedItem,
+    tags=["Chats"],
+)
+async def delete_chat(chat_id: UUID, user: AbstractUser = Depends(get_request_user)):
+    query = Chat.filtered_owners(user)
+    try:
+        chat = await query.aget(pk=chat_id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat not found")
+    await chat.adelete()
+    return DeletedItem(id=chat_id)
+
+
+@router.delete(
+    "/chats/{chat_id}/agents/{agent_id}",
+    operation_id="remove_agent",
+    response_model=ChatAgentAction,
+    tags=["Chats"],
+)
+async def remove_agent(
+    chat_id: UUID, agent_id: UUID, user: AbstractUser = Depends(get_request_user)
+):
+    try:
+        chat = await Chat.filtered_owners(user).aget(pk=chat_id)
+        agent = await Agent.filtered_owners(user).aget(pk=agent_id)
+        await chat.agents.aremove(agent)
+        return ChatAgentAction(chat_id=chat.id, agent_id=agent.id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat does not exist.")
+    except Agent.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Agent does not exist.")
+
+
+@router.put(
+    "/chats/{chat_id}/agents/{agent_id}",
+    operation_id="add_agent",
+    response_model=ChatAgentAction,
+    tags=["Chats"],
+)
+async def add_agent(
+    chat_id: UUID, agent_id: UUID, user: AbstractUser = Depends(get_request_user)
+):
+    try:
+        chat = await Chat.filtered_owners(user).aget(pk=chat_id)
+        agent = await Agent.filtered_owners(user).aget(pk=agent_id)
+
+        # Check if the agent is already a lead or an agent
+        if chat.lead_id == agent.id or await chat.agents.filter(id=agent.id).aexists():
+            return ChatAgentAction(chat_id=chat.id)
+
+        await chat.agents.aadd(agent)
+        await chat.asave()
+        return ChatAgentAction(chat_id=chat.id, agent_id=agent.id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat does not exist.")
+    except Agent.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Agent does not exist.")
+
+
+@router.get(
+    "/chats/{chat_id}/graph",
+    operation_id="get_chat_graph",
+    response_model=ChatGraph,
+    tags=["Chats"],
+)
+async def get_chat_graph(chat_id: str, user: AbstractUser = Depends(get_request_user)):
+    """Chat and related objects
+
+    Single object containing objects needed to render the chat view.
+
+    TODO: this should be broken apart into smaller queries so the UI can
+          load this incrementally.
+    """
+    try:
+        chat = await Chat.filtered_owners(user).aget(pk=chat_id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat does not exist.")
+    lead = await Agent.filtered_owners(user).aget(pk=chat.lead_id)
+    task = await Task.objects.aget(pk=chat.task_id)
+    agents = [AgentPydantic.model_validate(agent) async for agent in chat.agents.all()]
+    plans = [
+        PlanPydantic.model_validate(plan) async for plan in task.created_plans.all()
+    ]
+    artifacts = [
+        ArtifactPydantic.model_validate(artifact)
+        async for artifact in task.artifacts.all()
+    ]
+    return ChatGraph(
+        chat=ChatPydantic.model_validate(chat),
+        lead=AgentPydantic.model_validate(lead),
+        agents=agents,
+        plans=plans,
+        task=TaskPydantic.model_validate(task),
+        artifacts=artifacts,
+    )
+
+
+def get_artifacts(user_input):
+    """Find all references to artifacts in user input."""
+    # Pattern to find all instances of text enclosed in curly braces.
+    pattern = r"\{(.*?)\}"
+
+    # re.findall returns all non-overlapping matches of pattern in string, as a list of strings.
+    # The string is scanned left-to-right, and matches are returned in the order found.
+    matches = re.findall(pattern, user_input)
+
+    # Return the list of matches.
+    return matches
+
+
+@router.get(
+    "/chats/{chat_id}/messages",
+    operation_id="get_messages",
+    response_model=ChatMessageQueryPage,
+    tags=["Chats"],
+)
+async def get_messages(
+    chat_id,
+    limit: int = 10,
+    offset: int = 0,
+    user: AbstractUser = Depends(get_request_user),
+):
+    try:
+        chat = await Chat.filtered_owners(user).aget(pk=chat_id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat does not exist.")
+    task_id = chat.task_id
+    query = TaskLogMessage.objects.filter(
+        Q(task__root_id=task_id) | Q(task__id=task_id)
+    ).order_by("created_at")
+
+    # punting on async implementation of pagination until later
+    return await sync_to_async(ChatMessageQueryPage.paginate)(
+        output_model=ChatMessage, queryset=query, limit=limit, offset=offset
+    )
+
+
+@router.post(
+    "/chats/{chat_id}/messages",
+    operation_id="send_message",
+    response_model=ChatMessage,
+    tags=["Chats"],
+)
+async def send_message(
+    chat_id: str, chat_input: ChatInput, user: AbstractUser = Depends(get_request_user)
+):
+    try:
+        chat = await Chat.filtered_owners(user).aget(pk=chat_id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat does not exist.")
+    text = chat_input.text
+    artifact_ids = [str(pk) for pk in chat_input.artifact_ids or []]
+
+    # save to persistent storage
+    message = await TaskLogMessage.objects.acreate(
+        task_id=chat.task_id,
+        role="USER",
+        content=UserFeedback(
+            type="FEEDBACK",
+            feedback=text,
+            artifact_ids=artifact_ids,
+        ),
+    )
+
+    # determine if user targeted a specific agent in the chat
+    # if so, forward the message to that agent
+    # otherwise, forward the message to the lead agent
+    task_id = chat.task_id
+    user_input = text.strip().lower()
+    if user_input.startswith("@"):
+        # Find the first space or the end of the string
+        space_index = user_input.find(" ")
+        if space_index == -1:
+            space_index = len(user_input)  # pragma: no cover
+
+        # Extract the agent name and find the agent
+        agent_alias = user_input[1:space_index]
+
+        agent = await Agent.objects.filter(
+            Q(leading_chats=chat, alias=agent_alias)
+            | Q(chats__id=chat.id, alias=agent_alias)
+        ).aget()
+
+        # delegate the task to the agent and run in this thread
+        task = await Task.objects.aget(pk=chat.task_id)
+        subtask = await task.adelegate_to_agent(agent)
+        task_id = subtask.id
+    else:
+        agent = await Agent.objects.aget(pk=chat.lead_id)
+
+    # resume task loop
+    logger.info(
+        f"Requesting agent loop resume chat_id={chat.id} task_id={message.task_id} user_input={message.pk}"
+    )
+
+    inputs = {
+        "user_input": text,
+        "chat_id": str(chat.id),
+        "artifact_ids": artifact_ids,
+    }
+
+    # Start agent loop. This does NOT check if the loop is already running
+    # the agent_runner task is responsible for blocking duplicate runners
+    await start_agent(task_id, agent, inputs, user=user)
+
+    return ChatMessage.model_validate(message)
+
+
+@router.post(
+    "/chats/{chat_id}/messages/clear", operation_id="clear_messages", tags=["Chats"]
+)
+async def clear_messages(chat_id: str, user: AbstractUser = Depends(get_request_user)):
+    try:
+        chat = await Chat.filtered_owners(user).aget(pk=chat_id)
+    except Chat.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Chat does not exist.")
+    except Agent.DoesNotExist:
+        raise HTTPException(status_code=404, detail="Agent does not exist.")
+
+    await TaskLogMessage.objects.filter(
+        Q(task__root_id=chat.task_id) | Q(task_id=chat.task_id)
+    ).adelete()
+    return DeletedItem(id=chat_id)
+
+
+async def start_agent(
+    task_id: UUID, agent: Agent, inputs: Dict[str, Any], user: AbstractUser
+):
+    """Shim for start_agent_loop
+
+    The async decorator on start_agent_loop sometimes causes issues in tests.
+    Moving the function into this shim allows it to work correctly.
+    """
+    return start_agent_loop.delay(
+        str(task_id), chain_id=str(agent.chain_id), user_id=str(user.id), inputs=inputs
+    )

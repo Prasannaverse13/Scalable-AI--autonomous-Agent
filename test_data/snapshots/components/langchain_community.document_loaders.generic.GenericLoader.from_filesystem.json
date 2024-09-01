@@ -1,0 +1,124 @@
+{
+    "child_field": null,
+    "class_path": "langchain_community.document_loaders.generic.GenericLoader.from_filesystem",
+    "config_schema": {
+        "display_groups": null,
+        "properties": {
+            "glob": {
+                "default": "**/[!.]*",
+                "label": "Glob",
+                "type": "string"
+            },
+            "path": {
+                "label": "Path",
+                "style": {
+                    "width": "100%"
+                },
+                "type": "string"
+            },
+            "suffixes": {
+                "items": {},
+                "maxItems": null,
+                "minItems": null,
+                "type": "array",
+                "uniqueItems": false
+            }
+        },
+        "required": [
+            "path"
+        ],
+        "title": "from_filesystem",
+        "type": "object"
+    },
+    "connectors": [
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "parser",
+            "label": null,
+            "multiple": false,
+            "required": false,
+            "source_type": "parser",
+            "template": false,
+            "type": "target"
+        },
+        {
+            "as_type": null,
+            "collection": null,
+            "fields": null,
+            "from_field": null,
+            "init_modes": null,
+            "init_type": "init",
+            "key": "out",
+            "label": "Documents",
+            "multiple": false,
+            "required": false,
+            "source_type": "data",
+            "template": false,
+            "type": "source"
+        }
+    ],
+    "description": "Load documents from the filesystem.",
+    "display_type": "node",
+    "fields": [
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Path",
+            "max": null,
+            "min": null,
+            "name": "path",
+            "parent": null,
+            "required": true,
+            "secret_key": null,
+            "step": null,
+            "style": {
+                "width": "100%"
+            },
+            "type": "str"
+        },
+        {
+            "choices": null,
+            "default": null,
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Suffixes",
+            "max": null,
+            "min": null,
+            "name": "suffixes",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "list"
+        },
+        {
+            "choices": null,
+            "default": "**/[!.]*",
+            "description": null,
+            "init_type": "init",
+            "input_type": null,
+            "label": "Glob",
+            "max": null,
+            "min": null,
+            "name": "glob",
+            "parent": null,
+            "required": false,
+            "secret_key": null,
+            "step": null,
+            "style": null,
+            "type": "str"
+        }
+    ],
+    "name": "Filesystem Loader",
+    "type": "document_loader"
+}
