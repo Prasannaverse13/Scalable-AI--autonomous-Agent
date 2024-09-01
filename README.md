@@ -1,37 +1,6 @@
-# iX - Autonomous GPT-4 Agent Platform
-
-[![Unit Tests](https://img.shields.io/github/actions/workflow/status/kreneskyp/ix/test.yml)](https://github.com/kreneskyp/ix/actions/workflows/test.yml)
-[![Discord Server](https://dcbadge.vercel.app/api/server/jtrMKxzZZQ)](https://discord.gg/jtrMKxzZZQ)
-[![Twitter Follow](https://img.shields.io/twitter/follow/kreneskyp?style=social)](https://twitter.com/kreneskyp)
-
-<div>
-<img align="left" src="ix_350.png" alt="midjourney prompt: The ninth planet around the sun">
-<p>
-<br>
-<br>
-<br>
-<br>
-Amidst the swirling sands of the cosmos, Ix stands as an enigmatic jewel, 
-where the brilliance of human ingenuity dances on the edge of forbidden 
-knowledge, casting a shadow of intrigue over the galaxy.
-
-\- Atreides Scribe, The Chronicles of Ixian Innovation
-<p>
-</div>
-<div>
-<br>
-<br>
-<br>
-<br>
-<br>
-</div>
-
-
 ## 🌌 About
 <div>
-IX is a platform for designing and deploying autonomous and [semi]-autonomous LLM powered agents and workflows. IX
-provides a flexible and scalable solution for delegating tasks to AI powered agents. Agents created with the platform
-can automate a wide variety of tasks, while running in parallel and communicating with each other.
+The Scalable AI Platform is a cutting-edge solution designed for creating, deploying, and managing autonomous and semi-autonomous AI agents powered by large language models (LLMs). This platform provides a robust environment for building intelligent workflows that can automate a wide range of tasks, such as QA chat bots, code generation, data extraction, data analysis, and more. 
 <br>
 </div>
 
